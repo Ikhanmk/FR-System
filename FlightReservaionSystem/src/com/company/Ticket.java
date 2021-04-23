@@ -1,20 +1,14 @@
 package com.company;
 
 public abstract class Ticket {
-    private String pnr, from, to, departureDateTime, arraivalDateTime, seatNo;
+    private String pnr,from,to,departureDateTime,arraivalDateTime,seatNo;
     private Flight flight;
-
-    public Flight getFlight() {
-        return flight;
-    }
-
-    public Passenger getPassenger() {
-        return passenger;
-    }
-
-    private Passenger passenger;
+    private  Passenger passenger;
     private float price;
     private boolean cancelled;
+
+
+
 
     public Ticket(String pnr, String from, String to, String departureDateTime,
                   String arraivalDateTime, String seatNo, Flight flight,
@@ -31,15 +25,27 @@ public abstract class Ticket {
         this.cancelled = cancelled;
     }
 
+    public Ticket(){
+
+    }
 
 
-//    public String checkStatus(){
-//
-//    }
-//
-//    public int getFlightDuration(){
-//
-//    }
+    //getters and setters
+    public Flight getFlight(){   //aggregation rel
+        return flight;
+    }
+
+    public Passenger getPassenger() {   //aggregation rel
+        return passenger;
+    }
+
+    public void setFlight(Flight flight) {
+        this.flight = flight;
+    }
+
+    public void setPassenger(Passenger passenger) {
+        this.passenger = passenger;
+    }
 
     public String getPnr() {
         return pnr;
@@ -89,20 +95,6 @@ public abstract class Ticket {
         this.seatNo = seatNo;
     }
 
-
-
-
-    public void setFlight(Flight flight) {
-        this.flight = flight;
-    }
-
-
-
-
-    public void setPassenger(Passenger passenger) {
-        this.passenger = passenger;
-    }
-
     public float getPrice() {
         return price;
     }
@@ -119,8 +111,19 @@ public abstract class Ticket {
         this.cancelled = cancelled;
     }
 
+    //methods
 
-    public void cancel(boolean cancelled) {
-        this.cancelled = cancelled;
+    public String checkStatus(){
+        if(cancelled==false){
+            return "Ticket Booked";
+        }
+        else {
+            return "Ticket cancelled";
+        }
     }
+
+    public void cancel(boolean cancelled){
+        this.cancelled=cancelled;
+    }
+
 }

@@ -1,29 +1,34 @@
 package com.company;
 
 public class Flight {
-    private String flightNumber;
-    private String airline;
+    private String flightNumber,airline;
     private int capacity;
     private int bookedSeats;
-    private int bookingCounter=0;
+    private int counter=1;
 
-    //Constructor
-
+    //constructor
     public Flight(String flightNumber, String airline, int capacity, int bookedSeats) {
         this.flightNumber = flightNumber;
         this.airline = airline;
         this.capacity = capacity;
         this.bookedSeats = bookedSeats;
+
     }
 
-    //COPY CONSTRUCTOR
-    public Flight(Flight flight) {
+    //copy constructor
+    public Flight(Flight flight){
         this.flightNumber = flight.flightNumber;
         this.airline = flight.airline;
         this.capacity = flight.capacity;
         this.bookedSeats = flight.bookedSeats;
     }
-    //GETTERS AND SETTERS
+
+    public Flight() {
+
+    }
+
+
+    //getters and setters
     public String getFlightNumber() {
         return flightNumber;
     }
@@ -56,26 +61,33 @@ public class Flight {
         this.bookedSeats = bookedSeats;
     }
 
-    public int getBookingCounter() {
-        return bookingCounter;
+    public int getCounter() {
+        return counter;
     }
 
-    public void setBookingCounter(int bookingCounter) {
-        this.bookingCounter = bookingCounter;
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 
-    //METHODS
-    public String getFlightDetails()
-    {
-        return "flightNumber is: "+flightNumber+", airline is: "+airline+", capacity is: "+capacity+", bookedSeats: "+bookedSeats;
 
+    //methods
+
+    public String getFlightDetails(){
+        return this.flightNumber+"\n"+this.airline;
     }
-    public boolean checkAvailability()
-    {
-        return bookedSeats < capacity;
+
+    public boolean checkAvailability(){
+
+        if(capacity>bookedSeats) {
+            return true;
+        }else {
+            return false;
+        }
     }
-    public void incrementBookingCounter()
-    {
-     bookingCounter++;
+
+    public void incrementBookingCounter(){
+        counter++;
     }
+
+
 }
