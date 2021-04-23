@@ -1,69 +1,36 @@
 package com.company;
 
 public class TouristTicket {
+        private   String hotelAddress;
+    private String[] selectedTouristLocation;
 
-    String pnr;
-    String from;
-    String to;
-    String departureDateTime;
-    String arrivalDateTime;
-
-    public TouristTicket(String pnr, String from, String to, String departureDateTime, String arrivalDateTime, String seat_no, float price, boolean cancelled, String hotelAddress, String[] touristLocation) {
-        this.pnr = pnr;
-        this.from = from;
-        this.to = to;
-        this.departureDateTime = departureDateTime;
-        this.arrivalDateTime = arrivalDateTime;
-        this.seat_no = seat_no;
-        this.price = price;
-        this.cancelled = cancelled;
+    public TouristTicket(String hotelAddress,String pnr, String from, String to, String departureDateTime, String arraivalDateTime, String seatNo, Flight flight, Passenger passenger, float price, boolean cancelled) {
         this.hotelAddress = hotelAddress;
-        this.touristLocation = touristLocation;
+        this.selectedTouristLocation=new String[5];
+
+    }
+    public void setHotelAddress(String hotelAddress) {
+        this.hotelAddress = hotelAddress;
     }
 
-    String seat_no;
-    float price;
-    boolean cancelled;
-    public String hotelAddress;
-    String[] touristLocation = new String[5];
-
-    public String checkStatus() {
-        if (cancelled) {
-            return "cancelled";
-
-        } else {
-            return "confirmed";
-
+    public void setSelectedTouristLocation(String[] selectedTouristLocation) {
+        this.selectedTouristLocation = selectedTouristLocation;
+    }
+        public String getHotelAddress(){
+            return hotelAddress;
         }
-    }
 
-    public double getFlightDuration() {
-        return Math.random() * 10;
+        public String[] getSelectedTouristLocation(){
+            return this.selectedTouristLocation;
+        }
 
-    }
+        public void removeTouristLocations(String[] location){
+            this.selectedTouristLocation=location;
+            location=null;
+        }
 
-    public void cancel(boolean cancelled) {
-        this.cancelled=cancelled;
-
-
-    }
-
-    public String getHotelAddress() {
-        return this.hotelAddress;
-    }
-
-    public String[] getTouristLocations() {
-        return this.touristLocation;
-    }
-
-    public void addTouristLocation(String[] location) {
-        this.touristLocation=location;
-    }
-
-    public void removeTouristLocation(String[] location) {
-        this.touristLocation=location;
-        location=null;
+        public void addTouristLocations(String[] location){
+            this.selectedTouristLocation=location;
+        }
 
     }
-}
-

@@ -1,30 +1,60 @@
 package com.company;
 
 public class Passenger {
-    int id;
-    String addressStreet;
-    String addressCity;
-    String addressState;
+    private static int idCounter;
+    private int id;
 
-    String contactName;
-    String contactPhone;
-    String contactEmail;
-    public Passenger(int id,String addressStreet,String addressCity,String addressState,String contactName,String contactPhone,String contactEmail)
-    {
-        this.id=id;
-        this.addressStreet=addressStreet;
-        this.addressCity=addressCity;
-        this.addressState=addressState;
-        this.contactName=contactName;
-        this.contactPhone=contactPhone;
-        this.contactEmail=contactEmail;
+    private static class Address {
+        String street;
+        String city;
+        String state;
+
+        public Address(String street, String city, String state) {
+            this.street = street;
+            this.city = city;
+            this.state = state;
+        }
     }
-    public String getContactDetails()
-    {
-        return contactName + ", " + contactPhone + ", " + contactEmail;
-    }
-    public String getAddress()
-    {
-        return addressStreet+","+addressCity+","+addressState;
-    }
-}
+
+        private Address address;
+
+          private static class Contact {
+              String name, phone, email;
+
+              public Contact(String name, String phone, String email) {
+                  this.name = name;
+                  this.phone = phone;
+                  this.email = email;
+              }
+          }
+
+             private Contact contact;
+             static
+             {
+            idCounter = 0;
+             }
+             public Passenger(String addressStreet,String addressCity,String addressState,String contactName,String contactPhone,String contactEmail) {
+                 this.id = ++idCounter;
+                 this.address = new Address(addressStreet, addressCity, addressState);
+                 this.contact = new Contact(contactName, contactPhone, contactEmail);
+             }
+             public int getId() {
+                 return this.id;
+             }
+
+
+
+            public String getContactDetails() {
+                return contact.name + ", " + contact.phone + ", " + contact.email;
+            }
+            public String getAddressDetails() {
+                return address.street + "," + address.city + "," + address.state;
+
+            }
+            public int getPassengerCount(){
+              return idCounter++;
+             }
+
+        }
+
+
