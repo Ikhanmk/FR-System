@@ -1,8 +1,17 @@
 package com.company;
 
-public class Ticket {
+public abstract class Ticket {
     private String pnr, from, to, departureDateTime, arraivalDateTime, seatNo;
     private Flight flight;
+
+    public Flight getFlight() {
+        return flight;
+    }
+
+    public Passenger getPassenger() {
+        return passenger;
+    }
+
     private Passenger passenger;
     private float price;
     private boolean cancelled;
@@ -22,9 +31,7 @@ public class Ticket {
         this.cancelled = cancelled;
     }
 
-    //public Passenger getPassenger() {
-    // return passenger;
-    // }
+
 
 //    public String checkStatus(){
 //
@@ -82,17 +89,15 @@ public class Ticket {
         this.seatNo = seatNo;
     }
 
-    public Flight getFlight() {
-        return flight;
-    }
+
+
 
     public void setFlight(Flight flight) {
         this.flight = flight;
     }
 
-    public Passenger getPassenger() {
-        return passenger;
-    }
+
+
 
     public void setPassenger(Passenger passenger) {
         this.passenger = passenger;
